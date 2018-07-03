@@ -15,7 +15,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -23,10 +23,11 @@ requirements:
     - m2-automake{{ am_version }}  # [win]
     - m2-libtool  # [win]
     - m2w64-pkg-config  # [win]
-    - m2w64-toolchain  # [win]
     - pkg-config  # [not win]
     - posix  # [win]
-    - toolchain
+    - {{ compiler('c') }}        # [unix]
+    - {{ compiler('m2w64_c') }}  # [win]
+  host:
     - xorg-util-macros
 
 test:
